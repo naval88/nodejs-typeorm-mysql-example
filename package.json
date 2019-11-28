@@ -16,12 +16,12 @@
     "url": ""
   },
   "tags": [
-    "orm",
-    "typescript",
-    "typescript-orm",
-    "typeorm-sample",
-    "typeorm-example",
-    "typeorm-express-example"
+    "nodejs-orm",
+    "nodejs-typescript",
+    "nodejs-typescript-orm",
+    "nodejs-typeorm-sample",
+    "nodejs-typeorm-example",
+    "nodejs-typeorm-express-example"
   ],
   "devDependencies": {
     "@types/body-parser": "^1.16.8",
