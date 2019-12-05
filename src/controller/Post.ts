@@ -29,29 +29,30 @@ export const saveAllPosts = async (req: Request, res: Response) => {
     let  newUser:any = {};
     let  newPost:any = {};
     for(i=1; i<=6; i ++) {
+
    		newUser = await userRepository.findOne({ 
+        select: ["id"],
    			where: { id: i} 
    		});
+
+      console.log("hi", newUser);
    		if(typeof newUser == "undefined") {
    			newUser = new User();
-   			console.log("insert");
+   			newPost = new Post();
    		} else  {
    			console.log("update");
-   		}	   		
-		newUser.name  = "naval pankaj test"+i;   
-
-		newPost = await postRepository.findOne({ 
-   			where: { userId: i} 
-   		});
-   		if(typeof newPost == "undefined") {
-   			newPost = new Post();
-   			console.log("post insert");
-   		} else  {
-   			console.log("post update");
+        newPost = await postRepository.findOne({ 
+          select: ["id","userId"],
+          where: { userId: i} 
+        });
    		}
-		newPost.title = "naval pankaj add post title "+i;
-		newUser.posts = [newPost];
-		newUsers.push(newUser);		
+
+		 newUser.name  = "naval find pankaj test"+i; 
+   	 newPost.title = "naval asf pankaj add post title "+i;
+
+		 newUser.posts = [newPost];
+
+		 newUsers.push(newUser);		
 	}
     await userRepository.save(newUsers);  
     res.send("complete");
